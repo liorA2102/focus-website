@@ -2,14 +2,9 @@ import Link from 'next/link'
 import ScrollReveal from '@/components/ScrollReveal'
 import type { Dictionary, Locale } from '@/lib/i18n'
 
-// Sample positions — replace with real data source later
-const samplePositions = [
-  { id: '1', title: 'VP Engineering', company: 'High-Tech Startup', location: 'Tel Aviv', type: 'Full-time' },
-  { id: '2', title: 'CFO', company: 'Capital Fund', location: 'Ramat Gan', type: 'Full-time' },
-  { id: '3', title: 'Director of Business Development', company: 'MedTech Company', location: 'Herzliya', type: 'Full-time' },
-]
+type PreviewPosition = { id: string; title: string; company: string; location: string | null }
 
-export default function PositionsPreview({ d, lang }: { d: Dictionary; lang: Locale }) {
+export default function PositionsPreview({ d, lang, positions }: { d: Dictionary; lang: Locale; positions: PreviewPosition[] }) {
   return (
     <section className="py-24 px-14 bg-white" id="positions">
       <div className="max-w-[1080px] mx-auto">
@@ -25,27 +20,35 @@ export default function PositionsPreview({ d, lang }: { d: Dictionary; lang: Loc
           </ScrollReveal>
         </div>
 
-        <div className="flex flex-col gap-4">
-          {samplePositions.map((pos, i) => (
-            <ScrollReveal key={pos.id} delay={i * 60}>
-              <div className="flex items-center justify-between p-6 rounded-2xl border border-[var(--border)] hover:border-[var(--coral)]/30 hover:shadow-lg hover:-translate-y-0.5 transition-all group">
-                <div>
-                  <h3 className="text-[17px] font-bold text-[var(--navy)] mb-1 group-hover:text-[var(--coral)] transition-colors">{pos.title}</h3>
-                  <div className="flex items-center gap-4 text-sm text-[var(--muted)]">
-                    <span>{pos.company}</span>
-                    <span className="w-1 h-1 rounded-full bg-[var(--muted)]" />
-                    <span>{d.positions.location}: {pos.location}</span>
-                    <span className="w-1 h-1 rounded-full bg-[var(--muted)]" />
-                    <span>{pos.type}</span>
+        {positions.length === 0 ? (
+          <ScrollReveal>
+            <p className="text-[16px] text-[var(--muted)] text-center py-12">{d.positions.sub}</p>
+          </ScrollReveal>
+        ) : (
+          <div className="flex flex-col gap-4">
+            {positions.map((pos, i) => (
+              <ScrollReveal key={pos.id} delay={i * 60}>
+                <div className="flex items-center justify-between p-6 rounded-2xl border border-[var(--border)] hover:border-[var(--coral)]/30 hover:shadow-lg hover:-translate-y-0.5 transition-all group">
+                  <div>
+                    <h3 className="text-[17px] font-bold text-[var(--navy)] mb-1 group-hover:text-[var(--coral)] transition-colors">{pos.title}</h3>
+                    <div className="flex items-center gap-4 text-sm text-[var(--muted)]">
+                      <span>{pos.company}</span>
+                      {pos.location && (
+                        <>
+                          <span className="w-1 h-1 rounded-full bg-[var(--muted)]" />
+                          <span>{pos.location}</span>
+                        </>
+                      )}
+                    </div>
                   </div>
+                  <Link href={`/${lang}/positions/${pos.id}`} className="px-5 py-2 rounded-lg bg-[var(--coral-bg)] text-[var(--coral)] text-sm font-semibold hover:bg-[var(--coral)] hover:text-white transition-all no-underline shrink-0">
+                    {d.positions.apply}
+                  </Link>
                 </div>
-                <Link href={`/${lang}/positions/${pos.id}`} className="px-5 py-2 rounded-lg bg-[var(--coral-bg)] text-[var(--coral)] text-sm font-semibold hover:bg-[var(--coral)] hover:text-white transition-all no-underline shrink-0">
-                  {d.positions.apply}
-                </Link>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )
