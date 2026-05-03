@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Link from 'next/link'
 import { getDictionary, type Locale } from '@/lib/i18n'
 import ScrollReveal from '@/components/ScrollReveal'
