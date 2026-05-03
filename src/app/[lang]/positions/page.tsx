@@ -1,8 +1,7 @@
-export const dynamic = 'force-dynamic'
-
 import Link from 'next/link'
 import { getDictionary, type Locale } from '@/lib/i18n'
 import ScrollReveal from '@/components/ScrollReveal'
+import { createClient } from '@libsql/client'
 
 type ApiPosition = {
   id: number
@@ -17,11 +16,21 @@ type ApiPosition = {
 
 async function getPositions(): Promise<ApiPosition[]> {
   try {
-    const res = await fetch(`${process.env.FOCUS_API_URL}/api/public/positions`, {
-      next: { revalidate: 60 },
+    const client = createClient({
+      url: process.env.TURSO_URL!,
+      authToken: process.env.TURSO_TOKEN!,
     })
-    if (!res.ok) return []
-    return res.json()
+    const result = await client.execute('SELECT * FROM positions ORDER BY created_at DESC')
+    return result.rows.map((r) => ({
+      id: r.id as number,
+      title: r.title as string,
+      company: r.client as string,
+      location: r.location as string | null,
+      industry: null,
+      salaryRange: r.salary_range as string | null,
+      description: r.description as string | null,
+      requirements: r.requirements as string | null,
+    }))
   } catch {
     return []
   }

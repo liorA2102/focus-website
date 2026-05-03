@@ -1,9 +1,7 @@
-export const dynamic = 'force-dynamic'
-
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
 import { getDictionary, type Locale } from '@/lib/i18n'
 import ApplyForm from '@/components/ApplyForm'
+import { createClient } from '@libsql/client'
 
 type ApiPosition = {
   id: number
@@ -18,12 +16,26 @@ type ApiPosition = {
 
 async function getPosition(id: string): Promise<ApiPosition | null> {
   try {
-    const res = await fetch(`${process.env.FOCUS_API_URL}/api/public/positions`, {
-      next: { revalidate: 60 },
+    const client = createClient({
+      url: process.env.TURSO_URL!,
+      authToken: process.env.TURSO_TOKEN!,
     })
-    if (!res.ok) return null
-    const positions: ApiPosition[] = await res.json()
-    return positions.find((p) => String(p.id) === id) ?? null
+    const result = await client.execute({
+      sql: 'SELECT * FROM positions WHERE id = ?',
+      args: [Number(id)],
+    })
+    const r = result.rows[0]
+    if (!r) return null
+    return {
+      id: r.id as number,
+      title: r.title as string,
+      company: r.client as string,
+      location: r.location as string | null,
+      industry: null,
+      salaryRange: r.salary_range as string | null,
+      description: r.description as string | null,
+      requirements: r.requirements as string | null,
+    }
   } catch {
     return null
   }
