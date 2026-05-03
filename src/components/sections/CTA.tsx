@@ -4,7 +4,7 @@ import type { Dictionary, Locale } from '@/lib/i18n'
 
 export default function CTA({ d, lang }: { d: Dictionary; lang: Locale }) {
   return (
-    <section className="py-24 px-14 bg-[var(--navy)] relative overflow-hidden" id="contact">
+    <section className="py-24 px-5 md:px-14 bg-[var(--navy)] relative overflow-hidden" id="contact">
       {/* Decorative circles */}
       <svg className="absolute ltr:right-[-80px] rtl:left-[-80px] top-1/2 -translate-y-1/2 w-[480px] h-[480px] opacity-[0.035] pointer-events-none" viewBox="0 0 100 100" fill="none">
         {[49, 38, 27, 16, 5].map((r) => (
@@ -12,7 +12,7 @@ export default function CTA({ d, lang }: { d: Dictionary; lang: Locale }) {
         ))}
       </svg>
 
-      <div className="max-w-[1080px] mx-auto flex items-center justify-between gap-12 relative z-10">
+      <div className="max-w-[1080px] mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8 md:gap-12 relative z-10">
         <ScrollReveal>
           <h2 className="text-[clamp(30px,3.5vw,50px)] font-extrabold tracking-[-0.03em] leading-[1.1] text-white mb-3.5 whitespace-pre-line">{d.cta.title}</h2>
           <p className="text-[16px] leading-[1.65] text-white/45">{d.cta.sub}</p>

@@ -33,7 +33,7 @@ export default function Hero({ d, lang }: { d: Dictionary; lang: Locale }) {
   }, [words])
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden px-14 pt-[132px] pb-20"
+    <section className="relative min-h-screen flex items-center overflow-hidden px-5 md:px-14 pt-[132px] pb-20"
       style={{
         background: isRTL ? `
           radial-gradient(ellipse 60% 80% at 15% 40%, rgba(240,88,81,0.11) 0%, transparent 70%),
@@ -54,7 +54,7 @@ export default function Hero({ d, lang }: { d: Dictionary; lang: Locale }) {
       />
 
       {/* Network SVG */}
-      <svg className={`absolute top-0 h-full w-[58%] pointer-events-none opacity-0 animate-[fadeUp_0.8s_0.3s_forwards] ${isRTL ? 'left-[-20px]' : 'right-[-20px]'}`}
+      <svg className={`hidden md:block absolute top-0 h-full w-[58%] pointer-events-none opacity-0 animate-[fadeUp_0.8s_0.3s_forwards] ${isRTL ? 'left-[-20px]' : 'right-[-20px]'}`}
         viewBox="0 0 650 580" preserveAspectRatio="xMidYMid meet">
         <g stroke="#F05851" strokeWidth="1" opacity="0.13">
           <line x1="60" y1="55" x2="185" y2="28"/><line x1="185" y1="28" x2="330" y2="68"/>

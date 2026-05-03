@@ -9,7 +9,7 @@ export default function Stats({ d }: { d: Dictionary }) {
   ]
 
   return (
-    <section className="bg-[var(--navy)] py-16 px-14">
+    <section className="bg-[var(--navy)] py-16 px-5 md:px-14">
       <div className="max-w-[1080px] mx-auto grid grid-cols-3">
         {items.map((item, i) => (
           <ScrollReveal key={item.label} delay={i * 80} className={`text-center px-6 relative ${i > 0 ? 'before:absolute before:left-0 before:top-[10%] before:h-[80%] before:w-px before:bg-white/10' : ''}`}>

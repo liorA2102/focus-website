@@ -3,12 +3,12 @@ import type { Dictionary } from '@/lib/i18n'
 
 export default function Testimonials({ d }: { d: Dictionary }) {
   return (
-    <section className="py-24 px-14 bg-white">
+    <section className="py-24 px-5 md:px-14 bg-white">
       <div className="max-w-[1080px] mx-auto">
         <ScrollReveal><p className="text-[11px] font-bold tracking-[.12em] uppercase text-[var(--coral)] mb-3.5">{d.testimonials.tag}</p></ScrollReveal>
         <ScrollReveal delay={80}><h2 className="text-[clamp(30px,3.5vw,46px)] font-extrabold tracking-[-0.03em] leading-[1.1] text-[var(--navy)] mb-16 whitespace-pre-line">{d.testimonials.title}</h2></ScrollReveal>
 
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {d.testimonials.items.map((item, i) => (
             <ScrollReveal key={item.name} delay={i * 80}>
               <div className="bg-[var(--grey)] rounded-2xl p-8 flex flex-col justify-between h-full">

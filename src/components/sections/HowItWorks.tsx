@@ -3,13 +3,13 @@ import type { Dictionary } from '@/lib/i18n'
 
 export default function HowItWorks({ d }: { d: Dictionary }) {
   return (
-    <section className="py-24 px-14 bg-[var(--grey)]">
+    <section className="py-24 px-5 md:px-14 bg-[var(--grey)]">
       <div className="max-w-[1080px] mx-auto">
         <ScrollReveal><p className="text-[11px] font-bold tracking-[.12em] uppercase text-[var(--coral)] mb-3.5">{d.howItWorks.tag}</p></ScrollReveal>
         <ScrollReveal delay={80}><h2 className="text-[clamp(30px,3.5vw,46px)] font-extrabold tracking-[-0.03em] leading-[1.1] text-[var(--navy)] mb-3.5 whitespace-pre-line">{d.howItWorks.title}</h2></ScrollReveal>
         <ScrollReveal delay={160}><p className="text-[16px] leading-[1.7] text-[var(--muted)] max-w-[480px] mb-16">{d.howItWorks.sub}</p></ScrollReveal>
 
-        <div className="grid grid-cols-3 gap-8 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
           {/* Connecting line */}
           <div className="absolute top-8 left-[16%] right-[16%] h-px bg-[var(--border)] hidden md:block" />
 

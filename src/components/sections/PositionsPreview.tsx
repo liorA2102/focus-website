@@ -28,7 +28,7 @@ export default function PositionsPreview({ d, lang, positions }: { d: Dictionary
           <div className="flex flex-col gap-4">
             {positions.map((pos, i) => (
               <ScrollReveal key={pos.id} delay={i * 60}>
-                <div className="flex items-center justify-between p-6 rounded-2xl border border-[var(--border)] hover:border-[var(--coral)]/30 hover:shadow-lg hover:-translate-y-0.5 transition-all group">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-6 rounded-2xl border border-[var(--border)] hover:border-[var(--coral)]/30 hover:shadow-lg hover:-translate-y-0.5 transition-all group">
                   <div>
                     <h3 className="text-[17px] font-bold text-[var(--navy)] mb-1 group-hover:text-[var(--coral)] transition-colors">{pos.title}</h3>
                     <div className="flex items-center gap-4 text-sm text-[var(--muted)]">

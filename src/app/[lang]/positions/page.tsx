@@ -42,7 +42,7 @@ export default async function PositionsPage({ params }: { params: Promise<{ lang
   const positions = await getPositions()
 
   return (
-    <section className="min-h-screen pt-[120px] pb-24 px-14 bg-white">
+    <section className="min-h-screen pt-[120px] pb-24 px-5 md:px-14 bg-white">
       <div className="max-w-[1080px] mx-auto">
         <ScrollReveal><p className="text-[11px] font-bold tracking-[.12em] uppercase text-[var(--coral)] mb-4">{d.positions.tag}</p></ScrollReveal>
         <ScrollReveal delay={80}><h1 className="text-[clamp(36px,4vw,52px)] font-extrabold tracking-[-0.03em] leading-[1.1] text-[var(--navy)] mb-4">{d.positions.title}</h1></ScrollReveal>

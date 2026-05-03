@@ -7,9 +7,9 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
   const { about, stats } = d
 
   return (
-    <section className="min-h-screen pt-[120px] pb-24 px-14 bg-white">
+    <section className="min-h-screen pt-[120px] pb-24 px-5 md:px-14 bg-white">
       <div className="max-w-[1080px] mx-auto">
-        <div className="grid grid-cols-2 gap-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
           <div>
             <ScrollReveal><p className="text-[11px] font-bold tracking-[.12em] uppercase text-[var(--coral)] mb-4">{about.tag}</p></ScrollReveal>
             <ScrollReveal delay={80}><h1 className="text-[clamp(36px,4vw,52px)] font-extrabold tracking-[-0.03em] leading-[1.1] text-[var(--navy)] mb-8 whitespace-pre-line">{about.title}</h1></ScrollReveal>

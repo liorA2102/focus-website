@@ -4,9 +4,9 @@ import type { Dictionary, Locale } from '@/lib/i18n'
 
 export default function Footer({ d, lang }: { d: Dictionary; lang: Locale }) {
   return (
-    <footer className="bg-[#111922] px-14 pt-16 pb-8">
+    <footer className="bg-[#111922] px-5 md:px-14 pt-16 pb-8">
       <div className="max-w-[1080px] mx-auto">
-        <div className="grid grid-cols-3 gap-14 pb-12 border-b border-white/[0.07] mb-7">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14 pb-12 border-b border-white/[0.07] mb-7">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">

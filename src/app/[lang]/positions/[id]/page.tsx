@@ -52,7 +52,7 @@ export default async function PositionDetailPage({
 
   if (!position) {
     return (
-      <section className="min-h-screen pt-[120px] pb-24 px-14 bg-white">
+      <section className="min-h-screen pt-[120px] pb-24 px-5 md:px-14 bg-white">
         <div className="max-w-[1080px] mx-auto text-center py-20">
           <h1 className="text-[32px] font-extrabold text-[var(--navy)] mb-3">{d.positionDetail.notFound}</h1>
           <p className="text-[16px] text-[var(--muted)] mb-8">{d.positionDetail.notFoundBody}</p>
@@ -65,7 +65,7 @@ export default async function PositionDetailPage({
   }
 
   return (
-    <section className="min-h-screen pt-[120px] pb-24 px-14 bg-white">
+    <section className="min-h-screen pt-[120px] pb-24 px-5 md:px-14 bg-white">
       <div className="max-w-[1080px] mx-auto">
         {/* Back link */}
         <Link

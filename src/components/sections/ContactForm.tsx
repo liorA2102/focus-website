@@ -13,7 +13,7 @@ export default function ContactForm({ d }: { d: Dictionary }) {
   }
 
   return (
-    <section className="min-h-screen pt-[120px] pb-24 px-14 bg-white">
+    <section className="min-h-screen pt-[120px] pb-24 px-5 md:px-14 bg-white">
       <div className="max-w-[700px] mx-auto">
         <ScrollReveal><p className="text-[11px] font-bold tracking-[.12em] uppercase text-[var(--coral)] mb-4">{d.contact.tag}</p></ScrollReveal>
         <ScrollReveal delay={80}><h1 className="text-[clamp(36px,4vw,56px)] font-extrabold tracking-[-0.03em] leading-[1.1] text-[var(--navy)] mb-4">{d.contact.title}</h1></ScrollReveal>
@@ -29,7 +29,7 @@ export default function ContactForm({ d }: { d: Dictionary }) {
         ) : (
           <ScrollReveal delay={240}>
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-              <div className="grid grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-semibold text-[var(--navy)]">{d.contact.name}</label>
                   <input required className="px-4 py-3 rounded-lg border border-[var(--border)] text-sm text-[var(--navy)] outline-none focus:border-[var(--coral)] focus:ring-2 focus:ring-[var(--coral)]/10 transition-all" />
@@ -39,7 +39,7 @@ export default function ContactForm({ d }: { d: Dictionary }) {
                   <input required className="px-4 py-3 rounded-lg border border-[var(--border)] text-sm text-[var(--navy)] outline-none focus:border-[var(--coral)] focus:ring-2 focus:ring-[var(--coral)]/10 transition-all" />
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-semibold text-[var(--navy)]">{d.contact.email}</label>
                   <input type="email" required className="px-4 py-3 rounded-lg border border-[var(--border)] text-sm text-[var(--navy)] outline-none focus:border-[var(--coral)] focus:ring-2 focus:ring-[var(--coral)]/10 transition-all" />
