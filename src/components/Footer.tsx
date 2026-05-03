@@ -38,7 +38,6 @@ export default function Footer({ d, lang }: { d: Dictionary; lang: Locale }) {
             <div className="text-[10px] font-bold uppercase tracking-widest text-white/28 mb-5">{d.footer.contact}</div>
             <div className="space-y-3">
               {[
-                { icon: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0', text: d.footer.address },
                 { icon: 'M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12 19.79 19.79 0 0 1 1.21 3.5a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z', text: d.footer.phone },
                 { icon: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z M22,6 12,13 2,6', text: d.footer.email },
               ].map(({ icon, text }) => (
@@ -55,7 +54,7 @@ export default function Footer({ d, lang }: { d: Dictionary; lang: Locale }) {
 
         <div className="flex justify-between items-center">
           <span className="text-xs text-white/20">{d.footer.copyright}</span>
-          <span className="text-xs text-white/20">Ramat Gan, Israel</span>
+          <span className="text-xs text-white/20">Israel</span>
         </div>
       </div>
     </footer>
