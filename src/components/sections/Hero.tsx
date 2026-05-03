@@ -116,7 +116,7 @@ export default function Hero({ d, lang }: { d: Dictionary; lang: Locale }) {
           {d.hero.badge}
         </div>
 
-        <h1 className="text-[clamp(46px,5.5vw,78px)] font-extrabold leading-[1.04] tracking-[-0.035em] text-[var(--navy)] mb-6 opacity-0 animate-[fadeUp_0.6s_0.22s_forwards]">
+        <h1 className="text-[clamp(32px,5.5vw,78px)] font-extrabold leading-[1.04] tracking-[-0.035em] text-[var(--navy)] mb-6 opacity-0 animate-[fadeUp_0.6s_0.22s_forwards]">
           {d.hero.headline1}<br />
           <span className="text-[var(--coral)]">
             {d.hero.headlineAccent}{' '}
