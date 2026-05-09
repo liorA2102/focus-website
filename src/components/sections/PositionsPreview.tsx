@@ -28,23 +28,17 @@ export default function PositionsPreview({ d, lang, positions }: { d: Dictionary
           <div className="flex flex-col gap-4">
             {positions.map((pos, i) => (
               <ScrollReveal key={pos.id} delay={i * 60}>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-6 rounded-2xl border border-[var(--border)] hover:border-[var(--coral)]/30 hover:shadow-lg hover:-translate-y-0.5 transition-all group">
+                <Link href={`/${lang}/positions/${pos.id}`} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-6 rounded-2xl border border-[var(--border)] hover:border-[var(--coral)]/30 hover:shadow-lg hover:-translate-y-0.5 transition-all group no-underline cursor-pointer">
                   <div>
                     <h3 className="text-[17px] font-bold text-[var(--navy)] mb-1 group-hover:text-[var(--coral)] transition-colors">{pos.title}</h3>
                     <div className="flex items-center gap-4 text-sm text-[var(--muted)]">
-                      <span>{pos.company}</span>
-                      {pos.location && (
-                        <>
-                          <span className="w-1 h-1 rounded-full bg-[var(--muted)]" />
-                          <span>{pos.location}</span>
-                        </>
-                      )}
+                      {pos.location && <span>{pos.location}</span>}
                     </div>
                   </div>
-                  <Link href={`/${lang}/positions/${pos.id}`} className="px-5 py-2 rounded-lg bg-[var(--coral-bg)] text-[var(--coral)] text-sm font-semibold hover:bg-[var(--coral)] hover:text-white transition-all no-underline shrink-0">
+                  <span className="px-5 py-2 rounded-lg bg-[var(--coral-bg)] text-[var(--coral)] text-sm font-semibold group-hover:bg-[var(--coral)] group-hover:text-white transition-all shrink-0">
                     {d.positions.apply}
-                  </Link>
-                </div>
+                  </span>
+                </Link>
               </ScrollReveal>
             ))}
           </div>

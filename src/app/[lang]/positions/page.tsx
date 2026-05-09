@@ -64,7 +64,7 @@ export default async function PositionsPage({ params }: { params: Promise<{ lang
           <div className="flex flex-col gap-4">
             {positions.map((pos, i) => (
               <ScrollReveal key={pos.id} delay={i * 50}>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-6 rounded-2xl border border-[var(--border)] hover:border-[var(--coral)]/30 hover:shadow-lg hover:-translate-y-0.5 transition-all group">
+                <Link href={`/${lang}/positions/${pos.id}`} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-6 rounded-2xl border border-[var(--border)] hover:border-[var(--coral)]/30 hover:shadow-lg hover:-translate-y-0.5 transition-all group no-underline cursor-pointer">
                   <div>
                     {pos.industry && (
                       <div className="inline-flex items-center px-2.5 py-1 rounded-full bg-[var(--coral-bg)] text-[var(--coral)] text-[11px] font-bold tracking-wide uppercase mb-2">{pos.industry}</div>
@@ -76,10 +76,10 @@ export default async function PositionsPage({ params }: { params: Promise<{ lang
                       <span>{d.positionDetail.fullTime}</span>
                     </div>
                   </div>
-                  <Link href={`/${lang}/positions/${pos.id}`} className="px-5 py-2.5 rounded-lg bg-[var(--coral-bg)] text-[var(--coral)] text-sm font-semibold hover:bg-[var(--coral)] hover:text-white transition-all no-underline shrink-0 text-center sm:text-left">
+                  <span className="px-5 py-2.5 rounded-lg bg-[var(--coral-bg)] text-[var(--coral)] text-sm font-semibold group-hover:bg-[var(--coral)] group-hover:text-white transition-all shrink-0 text-center sm:text-left">
                     {d.positions.apply}
-                  </Link>
-                </div>
+                  </span>
+                </Link>
               </ScrollReveal>
             ))}
           </div>
