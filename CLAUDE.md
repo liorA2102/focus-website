@@ -45,6 +45,23 @@ Read back what's in Turso:
 GET http://localhost:3001/api/admin/sync-turso
 ```
 
+## Deploying to Production
+
+Git pushes to `main` trigger a Vercel build automatically, but **do not always auto-promote to the custom domain**. After pushing, always promote manually:
+
+```bash
+# 1. List deployments — find the newest one (shows age like "2m")
+npx vercel ls
+
+# 2. Promote it
+npx vercel promote <deployment-url> --yes
+
+# 3. Verify the CDN cache was cleared (should show age: 0, x-vercel-cache: MISS)
+curl -sI https://focusgroup.co.il/he/positions | grep -E "x-vercel-cache|age" -i
+```
+
+If `x-vercel-cache: HIT` with a high age after promotion, wait 10 seconds and retry the curl — CDN propagation takes a moment.
+
 ## Environment Variables
 
 | Var | Where | Purpose |
