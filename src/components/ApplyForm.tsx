@@ -89,6 +89,7 @@ export default function ApplyForm({ positionId, positionTitle, d }: Props) {
           <input
             name="phone"
             type="tel"
+            required
             className="px-4 py-3 rounded-xl border border-[var(--border)] bg-white text-[15px] text-[var(--navy)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--coral)] transition-colors"
           />
         </label>
