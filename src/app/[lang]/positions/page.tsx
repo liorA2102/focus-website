@@ -1,3 +1,8 @@
+// Positions are managed in Focus (Jacob's local CRM) and synced to Turso on every
+// create / update / status-change. force-dynamic ensures Vercel never caches this
+// page — every request reads live data straight from Turso.
+export const dynamic = 'force-dynamic'
+
 import Link from 'next/link'
 import { getDictionary, type Locale } from '@/lib/i18n'
 import ScrollReveal from '@/components/ScrollReveal'
@@ -66,8 +71,7 @@ export default async function PositionsPage({ params }: { params: Promise<{ lang
                     )}
                     <h3 className="text-[17px] font-bold text-[var(--navy)] mb-1 group-hover:text-[var(--coral)] transition-colors">{pos.title}</h3>
                     <div className="flex items-center gap-4 text-sm text-[var(--muted)]">
-                      <span>{pos.company}</span>
-                      {pos.location && <><span className="w-1 h-1 rounded-full bg-[var(--muted)]" /><span>{pos.location}</span></>}
+                      {pos.location && <span>{pos.location}</span>}
                       <span className="w-1 h-1 rounded-full bg-[var(--muted)]" />
                       <span>{d.positionDetail.fullTime}</span>
                     </div>

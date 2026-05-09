@@ -1,3 +1,7 @@
+// Position detail is read live from Turso on every request (no Vercel page cache).
+// See positions/page.tsx for the sync architecture note.
+export const dynamic = 'force-dynamic'
+
 import Link from 'next/link'
 import { getDictionary, type Locale } from '@/lib/i18n'
 import ApplyForm from '@/components/ApplyForm'
@@ -90,13 +94,7 @@ export default async function PositionDetailPage({
               {position.title}
             </h1>
             <div className="flex flex-wrap items-center gap-3 text-[14px] text-[var(--muted)] mb-8">
-              <span className="font-medium text-[var(--navy)]">{position.company}</span>
-              {position.location && (
-                <>
-                  <span className="w-1 h-1 rounded-full bg-[var(--border)]" />
-                  <span>{position.location}</span>
-                </>
-              )}
+              {position.location && <span>{position.location}</span>}
               <span className="w-1 h-1 rounded-full bg-[var(--border)]" />
               <span>{d.positionDetail.fullTime}</span>
             </div>

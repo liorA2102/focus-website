@@ -1,3 +1,7 @@
+// Home page includes a live positions preview — must not be statically cached.
+// See [lang]/positions/page.tsx for the full sync architecture note.
+export const dynamic = 'force-dynamic'
+
 import { getDictionary, type Locale } from '@/lib/i18n'
 import { createClient } from '@libsql/client'
 import Hero from '@/components/sections/Hero'
