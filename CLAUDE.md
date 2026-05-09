@@ -47,20 +47,19 @@ GET http://localhost:3001/api/admin/sync-turso
 
 ## Deploying to Production
 
-Git pushes to `main` trigger a Vercel build automatically, but **do not always auto-promote to the custom domain**. After pushing, always promote manually:
+GitHub pushes to `main` do NOT auto-deploy to the custom domain. Always deploy manually after pushing:
 
 ```bash
-# 1. List deployments — find the newest one (shows age like "2m")
-npx vercel ls
+cd ~/projects/focus-website
 
-# 2. Promote it
-npx vercel promote <deployment-url> --yes
+# Deploy + auto-alias to focusgroup.co.il in one step
+VERCEL_ORG_ID=team_BKl6c9mQxxviCdL6nG3yrerb \
+VERCEL_PROJECT_ID=prj_uobR1mzXX0f5iHy7FgX8xK9Akh4r \
+npx vercel deploy --prod
 
-# 3. Verify the CDN cache was cleared (should show age: 0, x-vercel-cache: MISS)
+# Verify (should show age: 0, x-vercel-cache: MISS)
 curl -sI https://focusgroup.co.il/he/positions | grep -E "x-vercel-cache|age" -i
 ```
-
-If `x-vercel-cache: HIT` with a high age after promotion, wait 10 seconds and retry the curl — CDN propagation takes a moment.
 
 ## Environment Variables
 
