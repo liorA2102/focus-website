@@ -124,7 +124,7 @@ export const he = {
     applyTitle: 'הגישו מועמדות',
     applyName: 'שם מלא',
     applyEmail: 'כתובת אימייל',
-    applyPhone: 'מספר טלפון (אופציונלי)',
+    applyPhone: 'מספר טלפון',
     applyCv: 'העלאת קורות חיים',
     applyCvHint: 'PDF, DOCX, או DOC · עד 10 MB',
     applySubmit: 'שליחת מועמדות',

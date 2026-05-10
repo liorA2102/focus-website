@@ -124,7 +124,7 @@ export const en = {
     applyTitle: 'Apply for this role',
     applyName: 'Full Name',
     applyEmail: 'Email Address',
-    applyPhone: 'Phone Number (optional)',
+    applyPhone: 'Phone Number',
     applyCv: 'Upload your CV',
     applyCvHint: 'PDF, DOCX, or DOC · Max 10 MB',
     applySubmit: 'Submit Application',
