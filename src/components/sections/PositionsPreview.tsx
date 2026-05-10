@@ -6,7 +6,7 @@ type PreviewPosition = { id: string; title: string; company: string; location: s
 
 export default function PositionsPreview({ d, lang, positions }: { d: Dictionary; lang: Locale; positions: PreviewPosition[] }) {
   return (
-    <section className="py-24 px-14 bg-white" id="positions">
+    <section className="py-24 px-14 bg-[var(--grey)]" id="positions">
       <div className="max-w-[1080px] mx-auto">
         <div className="flex items-end justify-between mb-14">
           <div>

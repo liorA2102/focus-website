@@ -3,7 +3,7 @@ import type { Dictionary } from '@/lib/i18n'
 
 export default function Industries({ d }: { d: Dictionary }) {
   return (
-    <section className="py-24 px-5 md:px-14 bg-[var(--grey)]" id="about">
+    <section className="py-24 px-5 md:px-14 bg-white" id="about">
       <div className="max-w-[1080px] mx-auto">
         <ScrollReveal><p className="text-[11px] font-bold tracking-[.12em] uppercase text-[var(--coral)] mb-3.5">{d.industries.tag}</p></ScrollReveal>
         <ScrollReveal delay={80}><h2 className="text-[clamp(30px,3.5vw,46px)] font-extrabold tracking-[-0.03em] leading-[1.1] text-[var(--navy)] mb-3.5 whitespace-pre-line">{d.industries.title}</h2></ScrollReveal>
