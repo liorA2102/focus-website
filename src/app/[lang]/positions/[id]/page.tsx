@@ -3,9 +3,11 @@
 export const dynamic = 'force-dynamic'
 
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import { getDictionary, type Locale } from '@/lib/i18n'
 import ApplyForm from '@/components/ApplyForm'
 import { createClient } from '@libsql/client'
+import { SHOW_POSITIONS } from '@/lib/flags'
 
 type ApiPosition = {
   id: number
@@ -51,6 +53,8 @@ export default async function PositionDetailPage({
   params: Promise<{ lang: string; id: string }>
 }) {
   const { lang, id } = await params
+  if (!SHOW_POSITIONS) redirect(`/${lang}`)
+
   const d = getDictionary(lang as Locale)
   const position = await getPosition(id)
 

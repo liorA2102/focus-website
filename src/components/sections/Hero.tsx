@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import type { Dictionary, Locale } from '@/lib/i18n'
+import { SHOW_POSITIONS } from '@/lib/flags'
 
 export default function Hero({ d, lang }: { d: Dictionary; lang: Locale }) {
   const wordRef = useRef<HTMLSpanElement>(null)
@@ -140,9 +141,11 @@ export default function Hero({ d, lang }: { d: Dictionary; lang: Locale }) {
           <Link href={`/${lang}/contact`} className="px-8 py-3.5 rounded-lg bg-[var(--coral)] text-white text-[15px] font-semibold hover:bg-[#d14a32] transition-all hover:-translate-y-px hover:shadow-xl no-underline">
             {d.hero.ctaPrimary}
           </Link>
-          <Link href={`/${lang}/positions`} className="px-8 py-3.5 rounded-lg border-2 border-[var(--navy)] text-[var(--navy)] text-[15px] font-semibold hover:bg-[var(--navy)] hover:text-white transition-all no-underline">
-            {d.hero.ctaSecondary}
-          </Link>
+          {SHOW_POSITIONS && (
+            <Link href={`/${lang}/positions`} className="px-8 py-3.5 rounded-lg border-2 border-[var(--navy)] text-[var(--navy)] text-[15px] font-semibold hover:bg-[var(--navy)] hover:text-white transition-all no-underline">
+              {d.hero.ctaSecondary}
+            </Link>
+          )}
         </div>
       </div>
     </section>

@@ -4,9 +4,11 @@
 export const dynamic = 'force-dynamic'
 
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import { getDictionary, type Locale } from '@/lib/i18n'
 import ScrollReveal from '@/components/ScrollReveal'
 import { createClient } from '@libsql/client'
+import { SHOW_POSITIONS } from '@/lib/flags'
 
 type ApiPosition = {
   id: number
@@ -43,6 +45,8 @@ async function getPositions(): Promise<ApiPosition[]> {
 
 export default async function PositionsPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
+  if (!SHOW_POSITIONS) redirect(`/${lang}`)
+
   const d = getDictionary(lang as Locale)
   const positions = await getPositions()
 

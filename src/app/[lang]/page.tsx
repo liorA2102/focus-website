@@ -1,4 +1,5 @@
-// Home page includes a live positions preview — must not be statically cached.
+// Home page can include a live positions preview (see SHOW_POSITIONS in @/lib/flags)
+// — must not be statically cached while that flag is on.
 // See [lang]/positions/page.tsx for the full sync architecture note.
 export const dynamic = 'force-dynamic'
 
@@ -11,6 +12,7 @@ import HowItWorks from '@/components/sections/HowItWorks'
 import Industries from '@/components/sections/Industries'
 import PositionsPreview from '@/components/sections/PositionsPreview'
 import CTA from '@/components/sections/CTA'
+import { SHOW_POSITIONS } from '@/lib/flags'
 
 async function getPreviewPositions() {
   try {
@@ -30,7 +32,7 @@ async function getPreviewPositions() {
 export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
   const d = getDictionary(lang as Locale)
-  const positions = await getPreviewPositions()
+  const positions = SHOW_POSITIONS ? await getPreviewPositions() : []
 
   return (
     <>
@@ -39,7 +41,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       <Services d={d} />
       <HowItWorks d={d} />
       <Industries d={d} />
-      <PositionsPreview d={d} lang={lang as Locale} positions={positions} />
+      {SHOW_POSITIONS && <PositionsPreview d={d} lang={lang as Locale} positions={positions} />}
       <CTA d={d} lang={lang as Locale} />
     </>
   )

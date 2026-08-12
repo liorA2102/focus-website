@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Logo from './Logo'
 import type { Dictionary, Locale } from '@/lib/i18n'
+import { SHOW_POSITIONS } from '@/lib/flags'
 
 export default function Footer({ d, lang }: { d: Dictionary; lang: Locale }) {
   return (
@@ -23,7 +24,7 @@ export default function Footer({ d, lang }: { d: Dictionary; lang: Locale }) {
               {[
                 { href: `/${lang}/about`, label: d.nav.about },
                 { href: `/${lang}/services`, label: d.nav.services },
-                { href: `/${lang}/positions`, label: d.nav.positions },
+                ...(SHOW_POSITIONS ? [{ href: `/${lang}/positions`, label: d.nav.positions }] : []),
                 { href: `/${lang}/contact`, label: d.nav.contact },
               ].map(({ href, label }) => (
                 <li key={href}>

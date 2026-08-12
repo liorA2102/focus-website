@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import Logo from './Logo'
 import type { Dictionary, Locale } from '@/lib/i18n'
+import { SHOW_POSITIONS } from '@/lib/flags'
 
 export default function Navbar({ d, lang }: { d: Dictionary; lang: Locale }) {
   const [scrolled, setScrolled] = useState(false)
@@ -22,7 +23,7 @@ export default function Navbar({ d, lang }: { d: Dictionary; lang: Locale }) {
   const navLinks = [
     { key: 'about', label: d.nav.about },
     { key: 'services', label: d.nav.services },
-    { key: 'positions', label: d.nav.positions },
+    ...(SHOW_POSITIONS ? [{ key: 'positions', label: d.nav.positions }] : []),
     { key: 'contact', label: d.nav.contact },
   ]
 
