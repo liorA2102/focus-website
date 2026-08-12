@@ -53,13 +53,27 @@ GitHub pushes to `main` do NOT auto-deploy to the custom domain. Always deploy m
 cd ~/projects/focus-website
 
 # Deploy + auto-alias to focusgroup.co.il in one step
-VERCEL_ORG_ID=team_BKl6c9mQxxviCdL6nG3yrerb \
-VERCEL_PROJECT_ID=prj_uobR1mzXX0f5iHy7FgX8xK9Akh4r \
 npx vercel deploy --prod
 
 # Verify (should show age: 0, x-vercel-cache: MISS)
-curl -sI https://focusgroup.co.il/he/positions | grep -E "x-vercel-cache|age" -i
+curl -sI https://focusgroup.co.il/he | grep -E "x-vercel-cache|age" -i
 ```
+
+Do **not** pass `VERCEL_ORG_ID` / `VERCEL_PROJECT_ID` — the older docs did, and it now
+fails with `Error: The specified token is not valid`. The account moved to the
+`lavidar-8851s-projects` scope, and the project is already linked through
+`.vercel/project.json`, so the CLI resolves it on its own. Check auth with
+`npx vercel whoami` (expect `lavidar-8851`); if it fails, run `vercel login`
+in a terminal yourself.
+
+## Public Job Posts Are Currently Hidden
+
+`src/lib/flags.ts` exports `SHOW_POSITIONS = false`, which hides the whole job-posts
+area: the homepage preview section, the Positions links in navbar / footer / hero, and
+the `/[lang]/positions` + `/[lang]/positions/[id]` pages (both redirect to the homepage,
+so the CV apply form is unreachable too). Flip the flag to `true` to bring it all back —
+nothing else needs to change. Turso keeps receiving open positions from Focus either
+way; the data is simply not displayed.
 
 ## Environment Variables
 
